@@ -34,4 +34,4 @@ def get_input(day: int) -> str:
         raise Exception(
             f'failed to get input for day {day}, status code {result.status_code}')
 
-    return result.text.strip()
+    return result.text

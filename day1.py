@@ -4,7 +4,7 @@ from typing import List
 
 if __name__ == "__main __":
     """do the counting calories exercise """
-    input_str = get_input(1)
+    input_str = get_input(1).strip()
     input_list = input_str.split('\n')
     elf = []
     elves = []  # type: List[int]

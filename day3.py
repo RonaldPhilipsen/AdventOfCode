@@ -46,14 +46,14 @@ def do_part_2(input_list: List[str]):
         sticker = set(group[0]).intersection(set(group[1])).intersection(set(group[2]))
         if len(sticker) > 1:
             raise Exception("More than one matching item in group")
-        if len(sticker) == 0:
+        elif len(sticker) == 0:
             raise Exception("elves have no group :(")
         group_priorities.append(get_priority(sticker.pop()))
     print(f'total group priorities: {sum(group_priorities)}')
 
 
 if __name__ == "__main __":
-    input_str = get_input(3)
+    input_str = get_input(3).strip()
     input_list = input_str.split('\n')
     do_part_1(input_list)
     do_part_2(input_list)

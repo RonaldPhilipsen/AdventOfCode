@@ -30,7 +30,7 @@ scores_map = {
 }
 
 if __name__ == "__main __":
-    input_str = get_input(2)
+    input_str = get_input(2).strip()
     input_list = input_str.split('\n')
 
     scores_part1 = [scores_map[i][0] for i in input_list if i]
