@@ -1,9 +1,9 @@
 import requests
+import os
 
 HTTP_OK = 200
 
-
-def get_input(day: int) -> str:
+def download_input(day: int) -> str:
     """gets the input for a given day of AOC
 
     Args:
@@ -35,3 +35,14 @@ def get_input(day: int) -> str:
             f'failed to get input for day {day}, status code {result.status_code}')
 
     return result.text
+
+
+def get_input(day: int):
+    if f'{day}_input.txt' in os.listdir('inputs'):
+        with open(f'inputs/{day}_input.txt', 'r', encoding='UTF-8') as f:
+            return f.read()
+    else:
+        txt = download_input(day)
+        with open(f'inputs/{day}_input.txt', 'w', encoding='UTF-8') as f:
+            f.write(txt)
+        return txt
