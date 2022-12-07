@@ -21,8 +21,9 @@ def parse_header(input_list: List[str]):
 def print_first_letter_of_each_column(mat: List[List[str]]):
     for column in mat:
         tmp = column.pop()
-        print(tmp)
+        print(tmp[1:2], end='')
         column.append(tmp)
+    print()
 
 
 def do_part1(input_list):
@@ -65,5 +66,5 @@ def do_part2(input_list):
 if __name__ == '__main__':
     input_str = get_input(5)
     input_list = input_str.split('\n')
-    do_part1()
-    do_part2()
+    do_part1(input_list)
+    do_part2(input_list)
