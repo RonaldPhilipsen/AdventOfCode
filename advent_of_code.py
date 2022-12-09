@@ -1,6 +1,7 @@
 import requests
 import os
 
+INPUT_PATH = os.getcwd() + '/input'
 HTTP_OK = 200
 
 def download_input(day: int) -> str:
@@ -38,11 +39,16 @@ def download_input(day: int) -> str:
 
 
 def get_input(day: int):
-    if f'{day}_input.txt' in os.listdir('inputs'):
-        with open(f'inputs/{day}_input.txt', 'r', encoding='UTF-8') as f:
+    try:
+        os.stat(INPUT_PATH)
+    except FileNotFoundError:
+        os.mkdir(INPUT_PATH)
+
+    if f'{day}_input.txt' in os.listdir(INPUT_PATH):
+        with open(f'{INPUT_PATH}/{day}_input.txt', 'r', encoding='UTF-8') as f:
             return f.read()
     else:
         txt = download_input(day)
-        with open(f'inputs/{day}_input.txt', 'w', encoding='UTF-8') as f:
+        with open(f'{INPUT_PATH}/{day}_input.txt', 'w', encoding='UTF-8') as f:
             f.write(txt)
         return txt
