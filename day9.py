@@ -32,3 +32,4 @@ if __name__ == '__main__':
     input_list = input_str.split('\n')
 
     print(move_snake(input_list, 1))
+    print(move_snake(input_list, 10))
