@@ -61,6 +61,7 @@ def find_scenic_scores(forest: List[str]) -> List[int]:
             )
     return scenic_scores
 
+
 input_str = get_input(8).strip()
 input_list = input_str.split('\n')
 

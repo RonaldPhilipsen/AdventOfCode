@@ -4,6 +4,7 @@ import os
 INPUT_PATH = os.getcwd() + '/input'
 HTTP_OK = 200
 
+
 def download_input(day: int) -> str:
     """gets the input for a given day of AOC
 
