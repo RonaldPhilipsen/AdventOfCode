@@ -1,11 +1,10 @@
 from advent_of_code import get_input
-from typing import List
 
 
 if __name__ == "__main __":
-    """do the counting calories exercise """
+    """do the counting calories exercise"""
     input_str = get_input(1).strip()
-    input_list = input_str.split('\n')
+    input_list = input_str.split("\n")
     elf = []
     elves = []  # type: List[int]
     for line in input_list:
@@ -19,5 +18,5 @@ if __name__ == "__main __":
     total_calories = [sum(elf) for elf in elves]
     total_calories.sort(reverse=True)
 
-    print(f'max_calories: {total_calories[0]}')
-    print(f'top 3 calories: {sum(total_calories[0:3])}')
+    print(f"max_calories: {total_calories[0]}")
+    print(f"top 3 calories: {sum(total_calories[0:3])}")

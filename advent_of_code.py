@@ -1,11 +1,12 @@
+from pathlib import PosixPath
 import requests
 import os
 
-INPUT_PATH = os.getcwd() + '/input'
+INPUT_PATH = PosixPath(os.getcwd(), "input")
 HTTP_OK = 200
 
 
-def download_input(day: int) -> str:
+def download_input(year: int, day: int) -> str:
     """gets the input for a given day of AOC
 
     Args:
@@ -18,15 +19,14 @@ def download_input(day: int) -> str:
     Returns:
         str: the input as a plain text string
     """
-    with open('.cookie', 'r', encoding='UTF-8') as f:
-        cookie = f.readline().strip('\n')
+    with open(".cookie", "r", encoding="UTF-8") as f:
+        cookie = f.readline().strip("\n")
 
     if not cookie:
-        raise Exception('failed to read cookie data')
+        raise Exception("failed to read cookie data")
 
-    url = f'https://adventofcode.com/2022/day/{day}/input'
-    request = requests.Request('GET',  url, headers={
-                               'Cookie': f'session={cookie}'})
+    url = f"https://adventofcode.com/{year}/day/{day}/input"
+    request = requests.Request("GET", url, headers={"Cookie": f"session={cookie}"})
     prepared_request = request.prepare()
 
     session = requests.Session()
@@ -34,22 +34,21 @@ def download_input(day: int) -> str:
 
     if result.status_code != HTTP_OK:
         raise Exception(
-            f'failed to get input for day {day}, status code {result.status_code}')
+            f"failed to get input for {year}/{day}, status code {result.status_code}"
+        )
 
     return result.text
 
 
-def get_input(day: int):
-    try:
-        os.stat(INPUT_PATH)
-    except FileNotFoundError:
-        os.mkdir(INPUT_PATH)
+def get_input(year: int, day: int):
+    yeardir = INPUT_PATH.joinpath(str(year))
+    yeardir.mkdir(parents=True, exist_ok=True)
 
-    if f'{day}_input.txt' in os.listdir(INPUT_PATH):
-        with open(f'{INPUT_PATH}/{day}_input.txt', 'r', encoding='UTF-8') as f:
+    if f"{day}_input.txt" in os.listdir(yeardir):
+        with open(f"{yeardir.as_posix()}/{day}_input.txt", "r", encoding="UTF-8") as f:
             return f.read()
     else:
-        txt = download_input(day)
-        with open(f'{INPUT_PATH}/{day}_input.txt', 'w', encoding='UTF-8') as f:
+        txt = download_input(year=year, day=day)
+        with open(f"{yeardir.as_posix()}/{day}_input.txt", "w", encoding="UTF-8") as f:
             f.write(txt)
         return txt

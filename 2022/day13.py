@@ -1,5 +1,4 @@
 from advent_of_code import get_input
-from typing import List
 
 from functools import cmp_to_key
 
@@ -29,5 +28,5 @@ flat_list = [item for sublist in pairs for item in sublist]
 flat_list.extend([[[2]], [[6]]])
 
 pairs_sorted = sorted(flat_list, key=cmp_to_key(is_correct_order))
-i1, i2 = pairs_sorted.index([[2]])+1, pairs_sorted.index([[6]])+1
-print(i1*i2)
+i1, i2 = pairs_sorted.index([[2]]) + 1, pairs_sorted.index([[6]]) + 1
+print(i1 * i2)

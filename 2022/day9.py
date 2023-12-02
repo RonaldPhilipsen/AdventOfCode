@@ -1,6 +1,6 @@
 from advent_of_code import get_input
 
-DIRECTIONS = {'U': -1J, 'D': 1J, 'L': -1, 'R': 1}
+DIRECTIONS = {"U": -1j, "D": 1j, "L": -1, "R": 1}
 
 
 def sign(num: complex):
@@ -22,14 +22,14 @@ def move_snake(data, tail_size):
         for _ in range(int(size)):
             snake[0] += DIRECTIONS[cmd]
             for i, tail in enumerate(snake[1:], 1):
-                snake[i] = get_new_tail_pos(snake[i-1], tail)
+                snake[i] = get_new_tail_pos(snake[i - 1], tail)
             tail_seen.add(snake[-1])
     return len(tail_seen)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     input_str = get_input(9).strip()
-    input_list = input_str.split('\n')
+    input_list = input_str.split("\n")
 
     print(move_snake(input_list, 1))
     print(move_snake(input_list, 10))

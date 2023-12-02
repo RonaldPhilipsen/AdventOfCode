@@ -1,7 +1,7 @@
 from advent_of_code import get_input
 
 input_str = get_input(4).strip()
-input_list = input_str.split('\n')
+input_list = input_str.split("\n")
 
 
 def fully_contains(a_set: set, b_set: set):
@@ -16,9 +16,9 @@ def overlaps(a_set: set, b_set: set):
 n_fully_contains = 0
 n_overlaps = 0
 for ip in input_list:
-    a, b = ip.split(',')
-    a_min, a_max = a.split('-')
-    b_min, b_max = b.split('-')
+    a, b = ip.split(",")
+    a_min, a_max = a.split("-")
+    b_min, b_max = b.split("-")
     a_set = set(range(int(a_min), int(a_max) + 1))
     b_set = set(range(int(b_min), int(b_max) + 1))
 
