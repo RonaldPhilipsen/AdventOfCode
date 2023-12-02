@@ -1,17 +1,15 @@
 from advent_of_code import get_input
-from typing import List
 import numpy as np
 from collections import deque
 
 
 input_text = get_input(12).strip()
-input_list = input_text.split('\n')
-data = [list(x.strip()) for x in input_text.split('\n')]
+input_list = input_text.split("\n")
+data = [list(x.strip()) for x in input_text.split("\n")]
 
-elevations = np.array([[ord(char) - ord('a')
-                        for char in line] for line in data])
-source = tuple(x[0] for x in np.where(elevations == ord('S') - ord('a')))
-target = tuple(x[0] for x in np.where(elevations == ord('E') - ord('a')))
+elevations = np.array([[ord(char) - ord("a") for char in line] for line in data])
+source = tuple(x[0] for x in np.where(elevations == ord("S") - ord("a")))
+target = tuple(x[0] for x in np.where(elevations == ord("E") - ord("a")))
 elevations[source] = 0
 elevations[target] = 26
 xmax, ymax = elevations.shape
@@ -46,6 +44,5 @@ def navigate(source, neighbor_func, stop_condition):
 
 
 if __name__ == "__main__":
-
     navigate(source, find_neighbors, lambda x: x == target)
     navigate(target, reversed_neighbors, lambda x: elevations[x] == 0)

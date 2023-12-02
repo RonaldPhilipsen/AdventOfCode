@@ -5,9 +5,9 @@ import unittest
 class TestFindInterestingValues(unittest.TestCase):
     def test_sample_input(self):
         input_list = []
-        with open('test\day10_sample_input.txt') as f:
+        with open("test\day10_sample_input.txt") as f:
             input_text = f.read().strip()
-            input_list = input_text.split('\n')
+            input_list = input_text.split("\n")
 
         comms = Communicator()
         comms.execute_commands(input_list)

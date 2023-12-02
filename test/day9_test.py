@@ -37,22 +37,22 @@ class TestUpdate_tail_pos(unittest.TestCase):
         head = 4 + 3j
         tail = 2 + 2j
         new_tail_pos = get_new_tail_pos(head, tail)
-        assert new_tail_pos == 3+3j
+        assert new_tail_pos == 3 + 3j
 
     def test_part1(self):
         INPUT_S = [
-            'R 4',
-            'U 4',
-            'L 3',
-            'D 1',
-            'R 4',
-            'D 1',
-            'L 5',
-            'R 2',
+            "R 4",
+            "U 4",
+            "L 3",
+            "D 1",
+            "R 4",
+            "D 1",
+            "L 5",
+            "R 2",
         ]
-        output =  move_snake(INPUT_S, 1)
+        output = move_snake(INPUT_S, 1)
         assert output == 13
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

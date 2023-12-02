@@ -30,9 +30,7 @@ def find_scenic_scores(forest: List[str]) -> List[int]:
     for index_x in range(1, len(forest) - 1):
         for index_y in range(1, len(forest[0]) - 1):
             tree = int(forest[index_x][index_y])
-            top_neighbours = (
-                bottom_neighbours
-            ) = left_neighbours = right_neighbours = 0
+            top_neighbours = bottom_neighbours = left_neighbours = right_neighbours = 0
             for index_i in range(0, index_x):
                 neighbour = int(forest[index_x - index_i - 1][index_y])
                 top_neighbours += 1
@@ -54,16 +52,13 @@ def find_scenic_scores(forest: List[str]) -> List[int]:
                 if tree <= neighbour:
                     break
             scenic_scores.append(
-                top_neighbours
-                * bottom_neighbours
-                * left_neighbours
-                * right_neighbours
+                top_neighbours * bottom_neighbours * left_neighbours * right_neighbours
             )
     return scenic_scores
 
 
 input_str = get_input(8).strip()
-input_list = input_str.split('\n')
+input_list = input_str.split("\n")
 
 top_line = bottom_line = len(input_list[0])
 left_line = right_line = len(input_list) - 2

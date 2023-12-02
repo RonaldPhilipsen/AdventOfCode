@@ -42,7 +42,7 @@ class Communicator:
 
 
 input_text = get_input(10).strip()
-input_list = input_text.split('\n')
+input_list = input_text.split("\n")
 
 comms = Communicator()
 comms.execute_commands(input_list)
