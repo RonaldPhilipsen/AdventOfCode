@@ -8,7 +8,7 @@ def line_intersect(ax1, ay1, ax2, ay2, bx1, by1, bx2, by2):
             <= (ua := ((bx2 - bx1) * (ay1 - by1) - (by2 - by1) * (ax1 - bx1)) / d)
             <= 1
             and 0
-            <= (ub := ((ax2 - ax1) * (ay1 - by1) - (ay2 - ay1) * (ax1 - bx1)) / d)
+            <= (_ub := ((ax2 - ax1) * (ay1 - by1) - (ay2 - ay1) * (ax1 - bx1)) / d)
             <= 1
         ):
             return int(ax1 + ua * (ax2 - ax1)), int(ay1 + ua * (ay2 - ay1))

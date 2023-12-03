@@ -3,26 +3,26 @@ from advent_of_code import get_input
 from functools import cmp_to_key
 
 
-pairs = [[eval(l) for l in x.split()] for x in get_input(13).split("\n\n")]
+pairs = [[eval(line) for line in x.split()] for x in get_input(2022, 13).split("\n\n")]
 
 
-def is_correct_order(l: list | int, r: list | int):
-    if isinstance(l, int) and isinstance(r, int):
-        return l - r
+def is_correct_order(left: list | int, right: list | int):
+    if isinstance(left, int) and isinstance(right, int):
+        return left - right
 
-    if isinstance(l, list) and isinstance(r, list):
-        if len(l) == 0 and len(r) == 0:
+    if isinstance(left, list) and isinstance(right, list):
+        if len(left) == 0 and len(right) == 0:
             return 0
-        if len(l) == 0:
+        if len(left) == 0:
             return -1
-        if len(r) == 0:
+        if len(right) == 0:
             return 1
-        r1 = is_correct_order(l[0], r[0])
-        return r1 if r1 != 0 else is_correct_order(l[1:], r[1:])
-    return is_correct_order([l], r) if isinstance(l, int) else is_correct_order(l, [r])
+        r1 = is_correct_order(left[0], right[0])
+        return r1 if r1 != 0 else is_correct_order(left[1:], right[1:])
+    return is_correct_order([left], right) if isinstance(left, int) else is_correct_order(left, [right])
 
 
-print(sum(i for i, (l, r) in enumerate(pairs, start=1) if is_correct_order(l, r) < 0))
+print(sum(i for i, (left, right) in enumerate(pairs, start=1) if is_correct_order(left, right) < 0))
 
 flat_list = [item for sublist in pairs for item in sublist]
 flat_list.extend([[[2]], [[6]]])

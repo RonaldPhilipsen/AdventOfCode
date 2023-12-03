@@ -2,7 +2,10 @@ from advent_of_code import get_input
 from typing import List
 import re
 import math
-
+from copy import deepcopy
+from dataclasses import dataclass
+from functools import reduce
+from operator import mul
 
 class Monkey:
     def __init__(
@@ -85,10 +88,7 @@ n_inspections = [monkey.n_inspections for monkey in monkeys]
 n_inspections.sort(reverse=True)
 print(n_inspections[0] * n_inspections[1])
 
-from copy import deepcopy
-from dataclasses import dataclass
-from functools import reduce
-from operator import mul
+
 
 data = input_text
 
@@ -143,7 +143,7 @@ def do_turn(i, should_divide, magic):
 
     while state.items:
         state.inspection_count += 1
-        old = state.items.pop(0)
+        _old = state.items.pop(0)
         new = eval(rule.expr)
         if should_divide:
             new //= 3
