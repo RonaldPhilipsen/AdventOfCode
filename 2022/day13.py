@@ -19,10 +19,20 @@ def is_correct_order(left: list | int, right: list | int):
             return 1
         r1 = is_correct_order(left[0], right[0])
         return r1 if r1 != 0 else is_correct_order(left[1:], right[1:])
-    return is_correct_order([left], right) if isinstance(left, int) else is_correct_order(left, [right])
+    return (
+        is_correct_order([left], right)
+        if isinstance(left, int)
+        else is_correct_order(left, [right])
+    )
 
 
-print(sum(i for i, (left, right) in enumerate(pairs, start=1) if is_correct_order(left, right) < 0))
+print(
+    sum(
+        i
+        for i, (left, right) in enumerate(pairs, start=1)
+        if is_correct_order(left, right) < 0
+    )
+)
 
 flat_list = [item for sublist in pairs for item in sublist]
 flat_list.extend([[[2]], [[6]]])

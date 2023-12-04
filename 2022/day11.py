@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from functools import reduce
 from operator import mul
 
+
 class Monkey:
     def __init__(
         self,
@@ -87,7 +88,6 @@ for i in range(0, 20):
 n_inspections = [monkey.n_inspections for monkey in monkeys]
 n_inspections.sort(reverse=True)
 print(n_inspections[0] * n_inspections[1])
-
 
 
 data = input_text
