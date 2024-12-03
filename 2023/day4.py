@@ -16,6 +16,7 @@ Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
 
 lines: FrozenList[str] = FrozenList(example_input.strip().splitlines())
 lines.freeze()
+debug_card_dict: Dict[str, int] = {}
 
 
 @cache
@@ -24,20 +25,6 @@ def get_n_matching_numbers(line: str):
     winning_numbers = winning_numbers_str.split()
     my_numbers = my_numbers_str.split()
     return sum(x in winning_numbers for x in my_numbers)
-
-
-def part1():
-    total_value = 0
-    for line in lines:
-        n_winning_numbers = get_n_matching_numbers(line)
-        if n_winning_numbers == 0:
-            continue
-        card_value = pow(2, n_winning_numbers - 1)
-        total_value += card_value
-    print(total_value)
-
-
-debug_card_dict: Dict[str, int] = {}
 
 
 @cache
@@ -56,6 +43,15 @@ def get_n_scratchcards(lines: FrozenList[str], line_num: int):
 
     return total_new_scratchcards
 
+def part1():
+    total_value = 0
+    for line in lines:
+        n_winning_numbers = get_n_matching_numbers(line)
+        if n_winning_numbers == 0:
+            continue
+        card_value = pow(2, n_winning_numbers - 1)
+        total_value += card_value
+    print(total_value)
 
 def part2():
     n_scratch_cards = len(lines)
