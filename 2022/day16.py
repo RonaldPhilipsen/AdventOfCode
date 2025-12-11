@@ -1,4 +1,5 @@
 """Advent of code day 16"""
+
 import re
 from dataclasses import dataclass
 from advent_of_code import get_input

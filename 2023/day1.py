@@ -57,7 +57,7 @@ def part2():
         if not line:
             continue
         digits = regex.findall(
-            rf'(\d|{"|".join(numbers.keys())})', line, overlapped=True
+            rf"(\d|{'|'.join(numbers.keys())})", line, overlapped=True
         )
         assert digits
 

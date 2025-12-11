@@ -51,6 +51,8 @@ humidity-to-location map:
 60 56 37
 56 93 4
 """
+
+
 def getNextAmount(cv, seed):
     for c in cv:
         if c[1] <= seed < c[1] + c[2]:

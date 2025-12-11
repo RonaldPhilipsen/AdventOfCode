@@ -1,4 +1,3 @@
-
 from enum import Enum
 
 
@@ -10,4 +9,3 @@ class handType(Enum):
     TwoPair = 2
     OnePair = 1
     HighCard = 0
-

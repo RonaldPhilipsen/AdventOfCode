@@ -30,9 +30,9 @@ def get_n_matching_numbers(line: str):
 @cache
 def get_n_scratchcards(lines: FrozenList[str], line_num: int):
     print(line_num)
-    debug_card_dict[f"card {line_num+1}"] = (
-        (debug_card_dict[f"card {line_num+1}"] + 1)
-        if f"card {line_num+1}" in debug_card_dict.keys()
+    debug_card_dict[f"card {line_num + 1}"] = (
+        (debug_card_dict[f"card {line_num + 1}"] + 1)
+        if f"card {line_num + 1}" in debug_card_dict.keys()
         else 1
     )
     new_scratchards = get_n_matching_numbers(line=lines[line_num])
@@ -43,6 +43,7 @@ def get_n_scratchcards(lines: FrozenList[str], line_num: int):
 
     return total_new_scratchcards
 
+
 def part1():
     total_value = 0
     for line in lines:
@@ -52,6 +53,7 @@ def part1():
         card_value = pow(2, n_winning_numbers - 1)
         total_value += card_value
     print(total_value)
+
 
 def part2():
     n_scratch_cards = len(lines)
